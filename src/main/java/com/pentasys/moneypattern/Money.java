@@ -75,9 +75,9 @@ public class Money {
 		return s;
 	}	
 	
-	public int add(Money m) throws differentCurrencyException{	
+	public void add(Money m) throws differentCurrencyException{	
 		if(this.samecurrency(m))
-			return this.amount + m.amount;
+			this.amount += m.amount;
 		else
 			throw new differentCurrencyException("Currency is different");
 	}

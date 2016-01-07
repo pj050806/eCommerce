@@ -1,16 +1,17 @@
 package com.packtpub.wicket.commerce;
 
+import com.pentasys.moneypattern.Money;
 import java.io.Serializable;
 
 public class Cheese implements Serializable {
   private String name;
   private String description;
-  private double price;
+  private Money price;
   public Cheese(String name, String description, double price) {
     super();
     this.name = name;
     this.description = description;
-    this.price = price;
+    this.price=new Money(price);
   }
   public String getName() {
     return name;
@@ -19,6 +20,9 @@ public class Cheese implements Serializable {
     return description;
   }
   public double getPrice() {
-    return price;
+    return Double.parseDouble(this.price.printAmount());
+  }
+  public Money getPriceMoney() {
+      return price;
   }
 }

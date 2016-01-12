@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cart implements java.io.Serializable {
-  private List<Cheese> cheeses = new ArrayList<Cheese>();
+  private List<Cheese> cheeses = new ArrayList<>();  
 
-  private Address billingAddress = new Address();
-
+  private Address billingAddress = new Address();  
+        
   public List<Cheese> getCheeses() {
     return cheeses;
   }

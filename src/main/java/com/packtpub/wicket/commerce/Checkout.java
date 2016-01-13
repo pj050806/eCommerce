@@ -7,9 +7,11 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
+import promocode.promoManager;
 
 public class Checkout extends CheesrPage {    
     private TextField field;
+    private ShoppingCartPanel shopcartpanel = new ShoppingCartPanel("cart", getCart());
 
   public Checkout() {
     add(new FeedbackPanel("feedback"));
@@ -42,8 +44,7 @@ public class Checkout extends CheesrPage {
         System.out.println("Order submited");
       }
     });
-    add(new ShoppingCartPanel("cart", getCart()));
-    
+    add(shopcartpanel);    
     
     Form f = new Form("promo-form");
     add(f);
@@ -54,13 +55,16 @@ public class Checkout extends CheesrPage {
         @Override
         public void onSubmit() {
             System.out.println("Method Promo Btn.");
-            String promo = (String)field.getModelObject();
+            String promo = (String)field.getModelObject();            
             
-            if(promo == null || promo.isEmpty())
+            if(promo == null || promo.isEmpty()) {
                 System.out.print("Empty Promo Field");
-            else
+            }else{
                 System.out.println(promo);                
-                // ToDo rabatt berechnen;
+                double erg = promoManager.calcsaleprice(getCart().getTotal(), promo);
+                shopcartpanel.setTotal(erg);
+            }
+            
         }
     });
     

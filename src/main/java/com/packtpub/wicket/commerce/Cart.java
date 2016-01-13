@@ -29,6 +29,13 @@ public class Cart implements java.io.Serializable {
     for (Cheese cheese : cheeses) {
       total += cheese.getPrice();
     }
+    
     return total;
+  }
+  
+  public void promoCode(String s) {
+      if(s.equals("cheese")) {
+          
+      }
   }
 }

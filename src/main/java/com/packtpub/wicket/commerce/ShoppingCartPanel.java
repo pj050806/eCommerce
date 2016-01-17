@@ -48,6 +48,8 @@ public class ShoppingCartPanel extends Panel {
   public void setTotal(double val) {      
       total_model.setObject(val);      
   }
-  
+  public void setTotal(String val) {      
+      total_model.setObject(val);      
+  }
 }
 
